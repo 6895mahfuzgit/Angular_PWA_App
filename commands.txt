@@ -1,1 +1,4 @@
 npm i --save @angular/service-worker
+npm  i -g http-server
+
+http-server -c-1 -P http://localhost:9000
