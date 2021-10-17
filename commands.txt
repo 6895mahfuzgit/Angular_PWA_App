@@ -6,4 +6,5 @@ http-server -c-1 -P http://localhost:9000
 not working -->>> ng generate universal ngu-app-shell --client-project angular-pwa-course
 
 ng generate app-shell
+ng run <project-name>:app-shell
 
