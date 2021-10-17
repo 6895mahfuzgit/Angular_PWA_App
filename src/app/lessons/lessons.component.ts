@@ -37,7 +37,7 @@ export class LessonsComponent implements OnInit {
     subscribeToNotifications() {
       if(this.swPush.isEnabled){
           this.swPush.requestSubscription({
-             serverPublicKey:"EoAYz7t61iZw4-3cyH0mnauEhccw2zRX4IEWAh1rvWU"
+             serverPublicKey: this.VAPID_PUBLIC_KEY
           });
       }
     }
