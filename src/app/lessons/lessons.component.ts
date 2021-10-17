@@ -20,6 +20,7 @@ export class LessonsComponent implements OnInit {
 
     constructor(
         private lessonsService: LessonsService,
+        private swPush:SwPush,
         private newsletterService: NewsletterService) {
 
     }
@@ -34,9 +35,11 @@ export class LessonsComponent implements OnInit {
     }
 
     subscribeToNotifications() {
-
-
-
+      if(this.swPush.isEnabled){
+          this.swPush.requestSubscription({
+             serverPublicKey:""
+          });
+      }
     }
 
 
