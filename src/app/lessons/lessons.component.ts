@@ -38,7 +38,18 @@ export class LessonsComponent implements OnInit {
       if(this.swPush.isEnabled){
           this.swPush.requestSubscription({
              serverPublicKey: this.VAPID_PUBLIC_KEY
-          });
+          })
+          .then(res=>{
+            console.log('Notification Subscription ',res)
+           let localSub= this.newsletterService.addPushSubscriber(res).subscribe(()=>{
+               console.log('Notification Subscription is Ok');
+               localSub.unsubscribe();
+            },err=>{
+                console.log('Notification Subscription is Not ok. Error: ',err);
+            });
+          })
+          .catch(err=>console.log("Can't not subscribe notification",err));
+          
       }
     }
 

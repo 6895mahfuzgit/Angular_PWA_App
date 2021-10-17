@@ -2,6 +2,7 @@
 
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
+//import { threadId } from "worker_threads";
 
 
 
@@ -13,7 +14,7 @@ export class NewsletterService {
     }
 
     addPushSubscriber(sub:any) {
-
+      return this.http.post('/api/notifications',sub);
     }
 
     send() {
