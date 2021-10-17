@@ -21,7 +21,6 @@ import {ServiceWorkerModule} from '@angular/service-worker';
 
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {AppRoutingModule} from "./app-routing.module";
-import { RouterModule } from '@angular/router';
 
 
 
@@ -32,13 +31,12 @@ import { RouterModule } from '@angular/router';
         LessonsComponent
     ],
     imports: [
-        BrowserModule.withServerTransition({ appId: 'serverApp' }),
+        BrowserModule,
         HttpClientModule,
         BrowserAnimationsModule,
         AppRoutingModule,
         ReactiveFormsModule,
         ServiceWorkerModule.register('/ngsw-worker.js',{enabled:environment.production}),
-        RouterModule,
     ],
     providers: [
         LessonsService
