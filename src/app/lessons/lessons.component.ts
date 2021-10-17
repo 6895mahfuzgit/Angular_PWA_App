@@ -16,7 +16,7 @@ export class LessonsComponent implements OnInit {
     lessons$: Observable<Lesson[]>;
     isLoggedIn$: Observable<boolean>;
 
-    readonly VAPID_PUBLIC_KEY = "TODO";
+    readonly VAPID_PUBLIC_KEY = "BDaTcAsOHl5ZCnVGxtBwDPXcP15Q20_o2aDfZOWcB7sxiNxbLQtBhwFCsY2f2UMbZaiBxd-zai-LSCtS0qRa5zU";
 
     constructor(
         private lessonsService: LessonsService,
@@ -37,7 +37,7 @@ export class LessonsComponent implements OnInit {
     subscribeToNotifications() {
       if(this.swPush.isEnabled){
           this.swPush.requestSubscription({
-             serverPublicKey:""
+             serverPublicKey:"EoAYz7t61iZw4-3cyH0mnauEhccw2zRX4IEWAh1rvWU"
           });
       }
     }
@@ -49,7 +49,7 @@ export class LessonsComponent implements OnInit {
     }
 
 
-
+    // "publicKey":"BDaTcAsOHl5ZCnVGxtBwDPXcP15Q20_o2aDfZOWcB7sxiNxbLQtBhwFCsY2f2UMbZaiBxd-zai-LSCtS0qRa5zU","privateKey":"EoAYz7t61iZw4-3cyH0mnauEhccw2zRX4IEWAh1rvWU"
 
 
 }
