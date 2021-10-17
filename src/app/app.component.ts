@@ -10,22 +10,23 @@ import {SwPush, SwUpdate} from "@angular/service-worker";
 export class AppComponent  implements OnInit {
 
 
-    constructor(private swUpdate:SwUpdate) {
+    constructor(private swUpdate: SwUpdate) {
 
     }
 
     ngOnInit() {
-    console.log('this.swUpdate.isEnabled :',this.swUpdate.isEnabled);
-    
-      if(this.swUpdate.isEnabled){
-        this.swUpdate.available.subscribe(()=>{
-           if(confirm("New version available. Locad New Version?")){
-             console.log('ddd');
-             
-             window.location.reload();
-           }
-        });
-      }
+
+        if (this.swUpdate.isEnabled) {
+
+            this.swUpdate.available.subscribe(() => {
+
+                if (confirm("New version available. Load New Version?")) {
+                    window.location.reload();
+                }
+
+            });
+
+        }
 
 
 

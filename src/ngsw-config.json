@@ -21,20 +21,18 @@
       ]
     }
   }],
-  "dataGroups":[
-   {
-    "name":"lessons-api",
-    "urls":[
-      "api/lessons"
-    ],
-    "cacheConfig":{
-      "strategy":"freshness",
-      "timeout":"10s",
-      "maxAge":"1d",
-      "maxSize":100
+  "dataGroups": [
+    {
+      "name": "lessons-api",
+      "urls": [
+        "/api/lessons"
+      ],
+      "cacheConfig": {
+        "strategy": "freshness",
+        "timeout":"10s",
+        "maxAge": "1d",
+        "maxSize": 100
+      }
     }
-   }
-
-
   ]
 }

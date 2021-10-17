@@ -1,15 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-shell',
-  templateUrl: './app-shell.component.html',
-  styleUrls: ['./app-shell.component.css']
+  selector: 'app-app-shell',
+  template: `      
+      
+      <img class="loading-indicator" src="/assets/loading.gif">
+      
+  `,
+    styles: [`
+      .loading-indicator {
+          height: 300px;
+          margin: 0 auto;
+      }
+  `]
 })
 export class AppShellComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit() {
   }
 
 }
