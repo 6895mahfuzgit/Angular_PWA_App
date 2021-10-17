@@ -2,3 +2,8 @@ npm i --save @angular/service-worker
 npm  i -g http-server
 
 http-server -c-1 -P http://localhost:9000
+
+not working -->>> ng generate universal ngu-app-shell --client-project angular-pwa-course
+
+ng generate app-shell
+
