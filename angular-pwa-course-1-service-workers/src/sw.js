@@ -17,6 +17,9 @@ async function installServiceWorker(){
     if(response.status!==200){
        // throw new Error('Could not load offline page!');
     }
+
+    const cache=await caches.open('app-cache');
+    cache.put(request,response)
 }
 
 self.addEventListener('activate',()=>{
