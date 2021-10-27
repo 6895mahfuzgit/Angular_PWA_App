@@ -12,9 +12,9 @@ platformBrowserDynamic().bootstrapModule(AppModule)
     .then(() => {
 
         if ('serviceWorker' in navigator) {
-
+            console.log('Service worker registration started');
             navigator.serviceWorker.register('/sw.js', {
-                scope: '/'
+                scope: '/',
             })
                 .then(registration => {
 
