@@ -1,8 +1,8 @@
 
-const VERSION = 'v10';
+const VERSION = 'v9';
 
 
-log('Installing ServiceWorker');
+log('Installing Service Worker');
 
 
 self.addEventListener('install', event => event.waitUntil(installServiceWorker()));
@@ -31,10 +31,11 @@ async function installServiceWorker() {
    return cache.addAll(
     [
         '/',
-        '/polyfills.js', 
-        '/styles.js',
-        '/vendor.js',
-        '/main.js',
+        '/polyfills.bundle.js', 
+        '/inline.bundle.js',
+        '/styles.bundle.js',
+        '/vendor.bundle.js',
+        '/main.bundle.js',
         '/assets/bundle.css',
         '/assets/angular-pwa-course.png',
         '/assets/main-page-logo-small-hat.png'
