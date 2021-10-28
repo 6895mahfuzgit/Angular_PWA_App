@@ -1,5 +1,5 @@
 
-const VERSION = 'v10';
+const VERSION = 'v11';
 
 
 log('Installing ServiceWorker');
@@ -39,7 +39,8 @@ async function installServiceWorker() {
             '/favicon.ico',
             '/assets/bundle.css',
             '/assets/angular-pwa-course.png',
-            '/assets/main-page-logo-small-hat.png'
+            '/assets/main-page-logo-small-hat.png',
+            '/api/lessons'
         ]
     );
 }
