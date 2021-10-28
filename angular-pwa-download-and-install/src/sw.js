@@ -26,20 +26,22 @@ async function installServiceWorker() {
 
     log("Service Worker installation started ");
 
-    const cache=await caches.open(getCacheVersion());
+    const cache = await caches.open(getCacheVersion());
 
-   return cache.addAll(
-    [
-        '/',
-        '/polyfills.js', 
-        '/styles.js',
-        '/vendor.js',
-        '/main.js',
-        '/assets/bundle.css',
-        '/assets/angular-pwa-course.png',
-        '/assets/main-page-logo-small-hat.png'
-    ]
-   );
+    return cache.addAll(
+        [
+            '/',
+            '/polyfills.js',
+            '/styles.js',
+            '/vendor.js',
+            '/runtime.js',
+            '/main.js',
+            '/favicon.ico',
+            '/assets/bundle.css',
+            '/assets/angular-pwa-course.png',
+            '/assets/main-page-logo-small-hat.png'
+        ]
+    );
 }
 
 self.addEventListener('activate', () => {
@@ -47,10 +49,25 @@ self.addEventListener('activate', () => {
     log('Service Worker activated');
 });
 
+self.addEventListener('fetch', event => event.respondWith(cacheThenNetwork(event)));
 
+async function cacheThenNetwork(event) {
+    const cache = await caches.open(getCacheVersion());
+    const cacheResponse = await cache.match(event.request);
 
-function getCacheVersion(){
-    return "app-cache-"+ VERSION;
+    if (cacheResponse) {
+        log('from cache :'+ event.request.url);
+        return cacheResponse;
+    }
+
+    const networkResponse = await fetch(event.request);
+    log('Calling Network :'+ event.request.url);
+    return networkResponse;
+
+}
+
+function getCacheVersion() {
+    return "app-cache-" + VERSION;
 }
 
 
