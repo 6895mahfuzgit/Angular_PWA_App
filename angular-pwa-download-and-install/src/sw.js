@@ -1,5 +1,4 @@
-
-const VERSION = 'v11';
+const VERSION = 'v12';
 
 
 log('Installing ServiceWorker');
@@ -39,16 +38,24 @@ async function installServiceWorker() {
             '/favicon.ico',
             '/assets/bundle.css',
             '/assets/angular-pwa-course.png',
-            '/assets/main-page-logo-small-hat.png',
-            '/api/lessons'
+            '/assets/main-page-logo-small-hat.png'
+            //   '/api/lessons'
         ]
     );
 }
 
-self.addEventListener('activate', () => {
+self.addEventListener('activate', () => activateSW());
 
-    log('Service Worker activated');
-});
+async function activateSW(){
+
+    log('Service Worker activated'); 
+    const cacheKeys = await caches.keys();
+    cacheKeys.forEach(cacheKey => {
+        if (cacheKey !== getCacheVersion()) {
+            caches.delete(cacheKey);
+        }
+    });
+}
 
 self.addEventListener('fetch', event => event.respondWith(cacheThenNetwork(event)));
 
@@ -57,12 +64,12 @@ async function cacheThenNetwork(event) {
     const cacheResponse = await cache.match(event.request);
 
     if (cacheResponse) {
-        log('from cache :'+ event.request.url);
+        log('from cache :' + event.request.url);
         return cacheResponse;
     }
 
     const networkResponse = await fetch(event.request);
-    log('Calling Network :'+ event.request.url);
+    log('Calling Network :' + event.request.url);
     return networkResponse;
 
 }
